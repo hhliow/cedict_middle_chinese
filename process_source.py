@@ -31,9 +31,11 @@ with open('char.tsv', 'w') as f:
     for ci, yin, yi, gu in d2:
         print(ci, gu, yin, yi, sep='\t', file=f)
 
+incorrect_set = set('頁涌')
+
 with open('words.tsv', 'w') as f, open('words_certain.tsv', 'w') as g:
     for ci, yin, yi, gu in d3:
-        if not gu or '/' in gu or '  ' in gu:  # contains uncertain pronunciations
+        if not gu or '/' in gu or '  ' in gu or any(ch in incorrect_set for ch in ci):  # contains uncertain pronunciations
             print(ci, gu, yin, yi, sep='\t', file=f)
         else:
             print(ci, gu, yin, yi, sep='\t', file=g)
