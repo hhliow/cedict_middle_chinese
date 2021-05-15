@@ -11,7 +11,7 @@ d1 = []
 d2 = []
 d3 = []
 
-with open('source.tsv') as f:
+with open('cedict_middle_chinese.tsv') as f:
     next(f)
     for line in f:
         ci, yin, yi, _, _, gu = line.rstrip('\n').split('\t')
